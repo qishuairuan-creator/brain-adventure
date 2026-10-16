@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>脑力大冒险 · 脑洞试炼</title>
+<style>
+:root{--ink:#26354d;--cream:#fff8e9;--gold:#ffc84d;--blue:#8dd8f5;--purple:#8e7be8;--green:#78d6a2;--red:#f27b75}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:linear-gradient(145deg,#a7e5ff,#e3f8ff 42%,#c9e8d1);min-height:100vh}
+button{font:inherit;cursor:pointer;border:0;touch-action:manipulation}
+.app{max-width:520px;min-height:100vh;margin:auto;padding:16px 14px 28px;position:relative;overflow:hidden}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{font-weight:1000;font-size:21px;letter-spacing:1px;text-shadow:0 2px #fff}.pill{background:#ffffffb8;border:2px solid #fff;border-radius:99px;padding:8px 12px;font-weight:800;box-shadow:0 4px 0 #4c719022}
+.hero{margin:18px 0 14px;background:linear-gradient(150deg,#fff9e7,#fff);border:3px solid #fff;border-radius:28px;padding:18px;box-shadow:0 9px 0 #4a7c9c22;position:relative}
+.hero:after{content:"";position:absolute;right:14px;top:10px;width:82px;height:82px;background:radial-gradient(circle at 35% 30%,#fff 0 8%,transparent 9%),linear-gradient(145deg,#ffe08a,#ffad45);border-radius:26px;transform:rotate(10deg);box-shadow:inset -5px -7px #e98d3655}
+.hero h1{font-size:29px;margin:0 90px 5px 0;line-height:1.15}.hero p{margin:8px 0;color:#66758a;font-size:14px;max-width:310px}.mascot{font-size:48px;position:absolute;right:30px;top:27px;z-index:1;filter:drop-shadow(0 5px 2px #8c6d4a33)}
+.stats{display:flex;gap:8px;margin:12px 0}.stat{flex:1;text-align:center;background:#ffffffad;border:2px solid white;border-radius:16px;padding:9px 5px;font-size:12px;color:#66758a}.stat b{display:block;font-size:18px;color:var(--ink)}
+.section-title{font-size:18px;font-weight:950;margin:18px 3px 10px}.levels{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.level{background:#fff9ec;border:2px solid white;border-radius:20px;padding:13px;text-align:left;box-shadow:0 5px 0 #597b8726;min-height:118px;color:var(--ink);position:relative}.level .emoji{font-size:28px;display:block;margin-bottom:4px}.level b{font-size:15px;display:block}.level small{display:block;color:#7b8797;margin-top:5px;line-height:1.4}.level .tag{position:absolute;right:9px;top:9px;background:#ffdf7d;border-radius:99px;padding:3px 7px;font-size:10px;font-weight:900}
+.primary{width:100%;border-radius:17px;padding:14px 16px;background:linear-gradient(#ffda66,#ffb936);font-weight:950;color:#583b12;box-shadow:0 5px 0 #d98a25;border:2px solid #fff;margin-top:12px}.secondary{border-radius:14px;padding:10px 13px;background:#edf7ff;color:#35536d;font-weight:850;border:2px solid white}
+.gamehead{display:flex;justify-content:space-between;align-items:center;margin:16px 0 12px}.back{border-radius:13px;padding:8px 12px;background:#ffffffbd;border:2px solid white;font-weight:900}.progress{height:8px;background:#ffffff9c;border-radius:99px;overflow:hidden;margin:8px 0 14px}.progress span{display:block;height:100%;background:linear-gradient(90deg,#79d8a8,#42b8e8);width:0;transition:width .3s}
+.puzzle{background:linear-gradient(145deg,#fffdf6,#fff1d6);border:3px solid white;border-radius:26px;padding:18px;box-shadow:0 8px 0 #517c8b24}
+.level-label{font-size:12px;font-weight:950;color:#8b7b64;letter-spacing:1px}.question{font-size:20px;font-weight:950;line-height:1.45;margin:8px 0 15px}.scene{background:linear-gradient(#d7f2ff,#f6fbff);border-radius:18px;padding:16px;text-align:center;border:2px solid #fff;min-height:105px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;font-size:32px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:9px}.option{padding:13px 9px;border-radius:15px;background:#fff;border:2px solid #dbe8ef;box-shadow:0 3px 0 #b8d2df66;font-weight:850;color:#364a62;min-height:51px}.option:active{transform:translateY(2px);box-shadow:none}.option.correct{background:#d8f8e6;border-color:#60c98e}.option.wrong{background:#ffe1df;border-color:#f27b75}
+.feedback{margin-top:12px;padding:12px;border-radius:14px;background:#eaf5ff;color:#456079;font-size:14px;line-height:1.55;display:none}.feedback.show{display:block}.hint{margin-top:10px;background:#fff4c8;border:2px solid white;border-radius:15px;padding:11px;font-size:13px;line-height:1.5;display:none}.hint.show{display:block}
+.bottomrow{display:flex;gap:8px;margin-top:12px}.bottomrow button{flex:1}.tiny{font-size:12px;color:#6b7b8c;text-align:center;margin:16px 0 0}.end{text-align:center;padding:26px 14px}.trophy{font-size:64px}.end h2{font-size:28px;margin:7px}.end p{line-height:1.6;color:#63738a}.hidden{display:none!important}
+@media(min-width:520px){.app{padding-top:22px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><div class="brand">🧠 脑力大冒险</div><div class="pill">⭐ <span id="stars">0</span>　🪙 <span id="coins">30</span></div></div>
+  <section id="home">
+    <div class="hero"><div class="mascot">🧑🏻‍🚀</div><h1>脑洞试炼<br>准备开动！</h1><p>别只盯着题目看——答案可能藏在规则之外。认真观察，勇敢试错，成为最强脑洞王。</p></div>
+    <div class="stats"><div class="stat"><b>5</b>原创烧脑关卡</div><div class="stat"><b>💡 3</b>次提示机会</div><div class="stat"><b>🏆 3星</b>完美通关</div></div>
+    <div class="section-title">选择试炼关卡</div>
+    <div class="levels" id="levelGrid"></div>
+    <button class="primary" id="continueBtn">▶ 从第一关开始</button>
+    <p class="tiny">试玩原型 · 进度保存在本次页面会话中</p>
+  </section>
+  <section id="play" class="hidden">
+    <div class="gamehead"><button class="back" id="homeBtn">← 关卡</button><div class="pill" id="levelPill">第 1 关</div><div class="pill">💡 <span id="hintsLeft">3</span></div></div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div class="puzzle">
+      <div class="level-label" id="category">观察力 · 第 1 关</div>
+      <div class="question" id="question"></div>
+      <div class="scene" id="scene"></div>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <div class="hint" id="hintBox"></div>
+      <div class="bottomrow"><button class="secondary" id="hintBtn">💡 看提示（-5金币）</button><button class="secondary" id="nextBtn" disabled>下一关 →</button></div>
+    </div>
+    <p class="tiny">烧脑提醒：有些题目考的不是知识，而是你默认了什么。</p>
+  </section>
+  <section id="ending" class="hidden">
+    <div class="hero end"><div class="trophy">🏆</div><h2 id="endTitle">试炼完成！</h2><div style="font-size:30px">⭐ ⭐ ⭐</div><p id="endText"></p><button class="primary" id="againBtn">再挑战一次</button><button class="secondary" id="homeFromEnd" style="width:100%;margin-top:10px">返回关卡地图</button></div>
+  </section>
+</div>
+<script>
+const levels = [
+ {title:"谁在说谎？",emoji:"🕵️",tag:"逻辑推理",desc:"三句话里只有一句是真的",cat:"逻辑推理",q:"宝箱只在一只箱子里。红箱说“宝藏不在我这”；蓝箱说“宝藏在红箱”；金箱说“蓝箱在说谎”。已知三句话只有一句真话，宝藏在哪？",scene:"🟥 红箱　 🟦 蓝箱　 🟨 金箱",opts:["红箱","蓝箱","金箱","信息不足"],ans:2,why:"若宝藏在金箱：红箱的话为真，蓝箱的话为假，金箱的话（蓝箱在说谎）为真，共两句真话？注意“蓝箱在说谎”描述的是蓝箱那句话为假，因此也为真。于是有两句真话。继续检验：红箱宝藏时，红箱假、蓝箱真、金箱假，恰好一句真，所以答案是红箱。",hint:"把每个宝箱当作答案，逐一判断三句话的真假。",fixAns:0},
+ {title:"奇怪的电梯",emoji:"🛗",tag:"脑洞推理",desc:"看似不可能的日常谜题",cat:"反直觉推理",q:"一个人住在 20 楼。每天早上坐电梯到 1 楼；回家时，若没下雨，他只坐到 12 楼再走楼梯；下雨时却能直接到 20 楼。为什么？",scene:"🏢　⬆️ 12 楼　　🌧️ ☂️",opts:["电梯坏了","他个子矮，够不到 20 楼按钮；下雨时用伞按按钮","他喜欢爬楼梯","楼层按钮会随天气变化"],ans:1,why:"他个子矮，平时够不到 20 楼按钮，只能按到 12 楼。下雨时手里有长伞，可以用伞尖按到 20 楼。",hint:"关键不是电梯，而是他在下雨天多了什么东西。"},
+ {title:"三盏灯",emoji:"💡",tag:"策略思考",desc:"一次进入房间的机会",cat:"策略与推理",q:"房间外有 3 个开关，房间内有 3 盏白炽灯，每个开关控制一盏。你只能进房间一次，如何确定每个开关对应哪盏灯？",scene:"🎚️ 1　 🎚️ 2　 🎚️ 3　　 💡 💡 💡",opts:["开一个开关，进去看亮灯","先开 A 几分钟再关，开 B 后进屋：亮灯是 B，热但不亮是 A，冷且不亮是 C","随机按开关","无法确定"],ans:1,why:"先开 A 几分钟让灯泡变热，再关掉 A、打开 B，随后进入房间。亮着的是 B 控制的灯；熄灭但发热的是 A；熄灭且冷的是 C。此题假设是会发热的传统白炽灯。",hint:"灯泡不仅会发光，还会留下什么线索？"},
+ {title:"数字陷阱",emoji:"🔢",tag:"规律识别",desc:"别急着套最熟悉的规律",cat:"规律识别",q:"找出规律：1、11、21、1211、111221、下一项是什么？",scene:"1 → 11 → 21 → 1211 → 111221 → ?",opts:["312211","212211","1112221","13112221"],ans:0,why:"这是“看数说数”序列：111221 读作“一个 1、一个 2、两个 1”，写成 312211。",hint:"不要做加减乘除，试着把每一项读出来。"},
+ {title:"最后一根火柴",emoji:"🔥",tag:"空间与创造",desc:"移动一根火柴，让等式成立",cat:"创造性解题",q:"数字由火柴组成。移动一根火柴，让等式成立：6 + 4 = 4。",scene:"<span style='font-family:monospace;font-size:35px;letter-spacing:4px'>6 + 4 = 4</span>",opts:["把 6 改成 5","把 + 改成 −，并调整数字","把等号改成不等号","把右边的 4 改成 9"],ans:2,why:"一种常见解法是把等号的一根火柴斜放，变成“≠”，即 6 + 4 ≠ 4，命题成立。题目允许改变符号，不要求等式继续保持等式。",hint:"题目要求“让等式成立”这句话，可能藏着一个文字陷阱。"}
+];
+let unlocked=0, current=0, stars=0, coins=30, hints=3, solved=new Set(), usedHint=new Set();
+const $=id=>document.getElementById(id);
+function updateStats(){$('stars').textContent=stars;$('coins').textContent=coins;$('hintsLeft').textContent=hints}
+function renderLevels(){
+ $('levelGrid').innerHTML=levels.map((l,i)=>`<button class="level" data-level="${i}" ${i>unlocked?'disabled style="opacity:.55"':''}><span class="tag">${i>unlocked?'🔒 未解锁':solved.has(i)?'✓ 已通关':'可挑战'}</span><span class="emoji">${l.emoji}</span><b>第 ${i+1} 关 · ${l.title}</b><small>${l.desc}</small></button>`).join('');
+ document.querySelectorAll('[data-level]').forEach(b=>b.addEventListener('click',()=>startLevel(+b.dataset.level)));
+}
+function show(section){['home','play','ending'].forEach(id=>$(id).classList.toggle('hidden',id!==section))}
+function startLevel(i){current=i;hints=3;updateStats();show('play');renderQuestion()}
+function renderQuestion(){
+ const l=levels[current];$('levelPill').textContent=`第 ${current+1} 关`;$('category').textContent=`${l.cat} · 第 ${current+1} 关`;$('question').textContent=l.q;$('scene').innerHTML=l.scene;$('progressBar').style.width=`${(current+1)/levels.length*100}%`;
+ $('options').innerHTML=l.opts.map((o,i)=>`<button class="option" data-opt="${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('');
+ $('feedback').className='feedback';$('feedback').textContent='';$('hintBox').className='hint';$('hintBox').textContent='';$('nextBtn').disabled=true;$('hintBtn').disabled=false;$('hintBtn').textContent='💡 看提示（-5金币）';
+ document.querySelectorAll('[data-opt]').forEach(b=>b.addEventListener('click',()=>answer(+b.dataset.opt)));
+}
+function answer(n){
+ if(solved.has(current)){return}
+ const l=levels[current], correct=l.fixAns!==undefined?l.fixAns:l.ans;
+ document.querySelectorAll('[data-opt]').forEach(b=>{b.disabled=true;const v=+b.dataset.opt;if(v===correct)b.classList.add('correct');if(v===n&&n!==correct)b.classList.add('wrong')});
+ const fb=$('feedback');fb.className='feedback show';
+ if(n===correct){fb.innerHTML='🎉 <b>漂亮！思路打开了！</b><br>'+l.why;solved.add(current);stars+=usedHint.has(current)?1:3;coins+=usedHint.has(current)?3:8;unlocked=Math.max(unlocked,Math.min(levels.length-1,current+1));$('nextBtn').disabled=false;$('nextBtn').textContent=current===levels.length-1?'查看结算 →':'下一关 →';}
+ else{fb.innerHTML='🧩 还差一点！别急着猜。<br>再检查一下每个条件，或者用提示换个角度。';$('nextBtn').disabled=true;document.querySelectorAll('[data-opt]').forEach(b=>{b.disabled=false});}
+ updateStats();
+}
+$('hintBtn').addEventListener('click',()=>{if(hints<=0||coins<5){$('hintBox').textContent='提示次数或金币不足。';$('hintBox').className='hint show';return}hints--;coins-=5;usedHint.add(current);$('hintBox').textContent='💡 提示：'+levels[current].hint;$('hintBox').className='hint show';$('hintBtn').disabled=true;updateStats()});
+$('nextBtn').addEventListener('click',()=>{if(current<levels.length-1){startLevel(current+1)}else{showEnding()}});
+function showEnding(){show('ending');$('endTitle').textContent=solved.size===levels.length?'脑洞王诞生！':'试炼告一段落';$('endText').textContent=`你已破解 ${solved.size}/${levels.length} 道谜题，获得 ${stars} 颗星星和 ${coins} 枚金币。真正的高手，不是从不犯错，而是愿意换个角度再试一次！`;}
+$('homeBtn').addEventListener('click',()=>{renderLevels();updateStats();show('home')});
+$('continueBtn').addEventListener('click',()=>startLevel(unlocked));
+$('againBtn').addEventListener('click',()=>{unlocked=0;current=0;stars=0;coins=30;hints=3;solved.clear();usedHint.clear();updateStats();renderLevels();startLevel(0)});
+$('homeFromEnd').addEventListener('click',()=>{renderLevels();updateStats();show('home')});
+renderLevels();updateStats();
+</script>
+</body></html>
